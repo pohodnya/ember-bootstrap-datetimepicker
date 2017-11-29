@@ -77,7 +77,10 @@ module.exports = {
     trees.push(new Funnel(datetimepickerPath, {
       destDir: 'eonasdan-bootstrap-datetimepicker'
     }));
-
-    return mergeTrees(trees);
+    if (process.env.EMBER_CLI_FASTBOOT) {
+      return mergeTrees([]);
+    } else {
+      return mergeTrees(trees);
+    }
   }
 };
